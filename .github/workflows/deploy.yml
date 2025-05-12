@@ -16,11 +16,35 @@ jobs:
       - name: Deploy via SSH
         uses: appleboy/ssh-action@master
         with:
-          host: ${{ secrets.SSH_HOST }}
-          username: ${{ secrets.SSH_USER }}
-          key: ${{ secrets.SSH_KEY }}
+          host: 54.196.168.176
+          username: ubuntu
+          key: MIIEowIBAAKCAQEAzJdf5Z0bl+TZZTOHpuRNRFxjXHmr5Ey2+ij0L/oUeYpO8yOW
+63pc2Uj/QOVA1x4M0CR14wpEYRQ9DxZ7mplzM7xTg087TcFn0K4lMO0zvlRONC3A
+TEqfYS1sOrjci54PPU8RNB0tH8xpwEpkhIAJmZ8t/94rvU3X4m/r75XzvJw10BYR
+PBAMJIYtjxzpBwM2QY6NLVZVELovsRDZpKeOx+9T0qke3jlrBsreEv6gPlj07oR5
+dH8Wz30nCavW8Hpk2WR8KpeGA7/S/3PTmrmghb3I9Y1RjNDos5ju5DenSgZ+S5oT
+KXnqDdT1hKk/Zl2+DY5WMGY1jBjM/BjebWbjiwIDAQABAoIBAAuE8mdRQz54Ki1i
+i17AOAGDWizYxO7jyuGm8KjK4eA+A1f5RwQXLacmTwjuX4o9LOeDRgf0igkVRKLW
+1zrLLQtarTEVgvdLznaXd4ybrnAm+whBEzS4duTX0+IyimhqC92d2BAhHGtP7Rxg
+k+xJ8UBvD/36GmhcO62KM7SXstOJtkjt8AsNss+q2g5LoICnCKoaXL9CUcyjwe2R
+ocY+tmSmt8RJ93uYe6rrbXjOKoZPSIEVsd3cTV7z4gCw7kkXrKr5Dex+zI5PMNT/
+KLJwS9hCm++00DDfECZuyUym2scKbEFuyo8/3+oHSnkeAasFQJFJdnI8TLQ9zhHz
+E6spEgECgYEA8AqBv9tDPQTDBZVDVImXSYZ+q60+y3x1++yFy+NWpHHj1z331/+y
+mQDQp6t7iP/GIfAAtxbuG8JeAAKWo6uocqVY2cDJz1se7tq9yzEnBYtQofymKjTC
++bQ6ElQ8v1w7tEPBP1LPPcxxFPVUsVK0SE5Aqv8kwOlJcvz/jH323gsCgYEA2jGD
+mZmRbpiAS9VhObnPvF2cGf/PT+4SEqcE7L2JNHl9GL9O6qDsKVc1/PG8Tb3S3y3Q
+1xISoTDVRPVleIFRwS2um4HB/DxrHUv6mSj7wsMIQ8+kJJc9LXi2/RHXs8POKwd/
+MX6HNcRKLEp5r7j9/UWdVOiiy5jIzvuM7ZmjAIECgYBwdIuqxV8vw/5VrEL55Ofi
+g0buyOAlVq6zknBwP5ZEvjJ+kUJ+iAU01wPpuVXLrgA1wAmlvPFaQenl2VCXZwEo
+jLweb8pcAZVxUzsdaW6dk1H4QbPbDBLYBw45rgszn1M9NYzgTLxYeGH17qV52YQq
+Z7a2JYgjdGd7nnleaVjxVwKBgC+K6mnllFLM1+euLuktG56npwPjQYDhFv8JdYFA
+K01Ly35A8Sket1aqshDTe3xVCEWo7gBu57BHu7Cy59FCHFZDZfBsbaBQaeaQT6Jf
+07u0U3CzJcjzS1lFHFo4MQ/yclHd6FEYiM2mX6MW9zzayj0NliKSLia+u8Kd/S8o
+cuQBAoGBAOwbtqv2Y25/2HIfxr5zn4mtziN8JE4ODSmDAxg7Fa++28QelKOo3C49
+9PY0+bBcXaZaRuWK0gF4yUnEdkwwDapaeUtP84FkIze4rqJmMC5SpPvmQDh1Q0ZQ
+JVGfHcR5NUumNrWfB1yVzOx2F/sOcen6fxhCRiLV03d0Wf0BWo5G
           script: |
-            cd ${{ secrets.PROJECT_PATH }}
+            cd /home/ubuntu/portfolio
             git pull origin main
             source venv/bin/activate
             pip install -r requirements.txt
