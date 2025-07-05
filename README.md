@@ -1,6 +1,8 @@
+## 💬 Gemini Flash Chat (Java Android)
 
-//https://aistudio.google.com/app/apikey
+This example demonstrates how to call the Gemini Flash API from an Android app using `HttpURLConnection`.
 
+```java
 public class MainActivity extends AppCompatActivity {
     EditText inputEditText;
     Button sendButton;
@@ -20,16 +22,12 @@ public class MainActivity extends AppCompatActivity {
         scrollView = findViewById(R.id.scrollView);
 
         sendButton.setOnClickListener(v -> {
-
-
             String userMessage = inputEditText.getText().toString().trim();
             if (!userMessage.isEmpty()) {
                 appendChat("You: " + userMessage);
                 getGeminiFlashResponse(userMessage);
                 inputEditText.setText("");
             }
-
-
         });
     }
 
@@ -43,23 +41,20 @@ public class MainActivity extends AppCompatActivity {
     private void getGeminiFlashResponse(String userInput) {
         new Thread(() -> {
             try {
-                URL url = new URL("https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key="+geminiApiKey+"\n"); // replace with your key
+                URL url = new URL("https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=" + geminiApiKey);
                 HttpURLConnection conn = (HttpURLConnection) url.openConnection();
                 conn.setRequestMethod("POST");
                 conn.setRequestProperty("Content-Type", "application/json");
                 conn.setRequestProperty("X-goog-api-key", geminiApiKey);
                 conn.setDoOutput(true);
 
-                // Prepare JSON payload
                 String jsonInput = "{ \"contents\": [ { \"parts\": [ { \"text\": \"" + userInput + "\" } ] } ] }";
 
-                // Send request
                 try (OutputStream os = conn.getOutputStream()) {
                     byte[] input = jsonInput.getBytes("utf-8");
                     os.write(input, 0, input.length);
                 }
 
-                // Read response
                 InputStream inputStream = new BufferedInputStream(conn.getInputStream());
                 BufferedReader reader = new BufferedReader(new InputStreamReader(inputStream));
                 StringBuilder result = new StringBuilder();
@@ -78,11 +73,9 @@ public class MainActivity extends AppCompatActivity {
                         .getString("text");
 
                 appendChat("Gemini: " + reply);
-
             } catch (Exception e) {
                 appendChat("Error: " + e.getMessage());
             }
         }).start();
     }
-
 }
